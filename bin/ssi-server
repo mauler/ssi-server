@@ -1,5 +1,6 @@
-#!/home/paulo/.virtualenvs/mediacenter/bin/python
+#!/usr/bin/env python
 # encoding: utf-8
+
 import hashlib
 import mimetypes
 import os
