@@ -38,15 +38,11 @@ def static(path=''):
         basepath = os.path.dirname(path)
 
     def get_included_content(basepath, filepath):
-        print 'basepath', basepath
-        print 'filepath', filepath
-        fullpath = os.path.join(basepath, filepath)
-        print 'fullpath', fullpath
+        # fullpath = os.path.join(basepath, filepath)
         # if fullpath.startswith('/'):
         #     path = os.path.join(basepath, fullpath.lstrip('/'))
         # else:
         #     path = os.path.join(basepath, fullpath)
-        print 'path', path
 
         basepath = os.path.dirname(path)
 
@@ -64,7 +60,8 @@ def static(path=''):
     exists = os.path.exists(fullpath) and os.path.isfile(fullpath)
     response.content_type = mimetypes.guess_type(fullpath)[0]
 
-    if path == '' or fullpath.endswith('/') and not exists:
+    if path == '' or fullpath.endswith('/') and not exists or \
+            os.path.isdir(fullpath):
         if AUTO_INDEX and os.path.isdir(os.path.join(ROOT_PATH, path)):
             return auto_index(path)
         else:
